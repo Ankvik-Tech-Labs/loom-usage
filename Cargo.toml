@@ -1,0 +1,30 @@
+[package]
+name = "loom-usage"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+alloy = { version = "0.5.4", features = [
+  "full",
+  "json-rpc",
+  "node-bindings",
+  "rand",
+  "rlp",
+  "rpc-types-anvil",
+  "rpc-types-json",
+  "rpc-types-trace",
+  "serde",
+] }
+alloy-provider = { version = "0.5.4", features = ["anvil-api", "anvil-node", "debug-api", "ipc", "pubsub", "reqwest", "ws"] }
+alloy-primitives = { version = "0.8.9", features = ["rand"] }
+alloy-rpc-types = "0.5.4"
+anyhow = "1.0.91"
+debug-provider = { git = "https://github.com/dexloom/loom/", version = "0.2.0" }
+defi-abi = { git = "https://github.com/dexloom/loom/", version = "0.2.0" }
+# defi-address-book = { git = "https://github.com/dexloom/loom/", version = "0.2.0" }
+# defi-entities = { git = "https://github.com/dexloom/loom/", version = "0.2.0" }
+defi-pools = { git = "https://github.com/dexloom/loom/", version = "0.2.0" }
+# loom-revm-db = { git = "https://github.com/dexloom/loom/", version = "0.2.0" }
+# rand = "0.8.5"
+tokio = { version = "1.41.0", features = ["full"] }
+dotenv = "0.15.0"
