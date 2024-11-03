@@ -7,12 +7,15 @@ use alloy::{
 };
 use alloy_provider::RootProvider;
 use alloy_rpc_types::BlockId;
-use std::result::Result;
-use debug_provider::{AnvilDebugProvider, AnvilDebugProviderFactory};
-use defi_abi::uniswap2::IUniswapV2Pair;
 use dotenv::dotenv;
+use loom_defi_abi::uniswap2::IUniswapV2Pair;
+use loom_node_debug_provider::{AnvilDebugProvider, AnvilDebugProviderFactory};
+use std::result::Result;
 
-async fn fetch_pools(node_url: String, block_number: u64) -> Result<(), Box<dyn std::error::Error>>  {
+async fn fetch_pools(
+    node_url: String,
+    block_number: u64,
+) -> Result<(), Box<dyn std::error::Error>> {
     const POOL_ADDRESSES: [Address; 4] = [
         address!("322BBA387c825180ebfB62bD8E6969EBe5b5e52d"), // ITO/WETH pool
         address!("b4e16d0168e52d35cacd2c6185b44281ec28c9dc"), // USDC/WETH pool
@@ -52,4 +55,5 @@ async fn main() {
     let node_url: String = env::var("WSS_RPC_URL").unwrap();
     // println!("{}", node_url);
     let _ = fetch_pools(node_url, block_number).await;
+    // println!("Pools: {:?}", pools);
 }
